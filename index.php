@@ -105,10 +105,10 @@
         <?php foreach ($hotels as $hotel): ?>
         <tr>
           <td><?php echo $hotel['name'] ?></td>
-          <td><?php echo ($hotel['parking'])? 'Sì' : 'No' ?></td>
           <td><?php echo $hotel['description'] ?></td>
-          <td><?php echo $hotel['distance_to_center'] ?> km</td>
+          <td><?php echo ($hotel['parking'])? 'Sì' : 'No' ?></td>
           <td><?php echo $hotel['vote'] ?> / 5</td>
+          <td><?php echo $hotel['distance_to_center'] ?> km</td>
         </tr>
         <?php endforeach; ?>
 
