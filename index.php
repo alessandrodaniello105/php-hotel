@@ -51,8 +51,6 @@
   //   if()
   // }
 
-  $name = $_GET['parking'];
-  var_dump($name);
 
 ?>
 
@@ -91,15 +89,17 @@
     <div class="row justify-content-center">
 
     <table class="table">
+
       <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Parking</th>
-          <th scope="col">Description</th>
-          <th scope="col">Distance to center</th>
-          <th scope="col">Vote</th>
+          <?php foreach ($hotels[0] as $key => $hotel): ?>
+    
+          <th scope="col"><?php echo ((str_contains($key, '_')) ? ucwords(str_replace('_', ' ', $key)) : ucwords($key)) ?></th>
+
+          <?php endforeach; ?>
         </tr>
       </thead>
+
       <tbody>
 
         <?php foreach ($hotels as $hotel): ?>
@@ -113,6 +113,7 @@
         <?php endforeach; ?>
 
       </tbody>
+
     </table>
 
       <?php foreach ($hotels as $hotel): ?>
