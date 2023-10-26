@@ -1,5 +1,6 @@
 <?php
 
+
   $hotels = [
 
     [
@@ -40,6 +41,19 @@
 
   ];
 
+
+
+  // $filtered_hotels = [];
+
+  // $filtered_hotels = in_array('parking',$hotels)
+
+  // function filterHotel() {
+  //   if()
+  // }
+
+  $name = $_GET['parking'];
+  var_dump($name);
+
 ?>
 
 <!DOCTYPE html>
@@ -55,6 +69,25 @@
 <body>
   
   <div class="container my-5">
+
+    <div class="row">
+      <div class="col-2">
+
+        <form action="index.php" method="GET">
+        <label for="parking"> Parcheggio:</label>
+
+          <select if="parking" name="parking" class="form-select my-2" aria-label="Default select example">
+            <option selected>Qualsiasi</option>
+            <option value="true">Sì</option>
+            <option value="false">No</option>
+          </select>
+
+          <button type="submit">Invia</button>
+        </form>
+
+      </div>
+    </div>
+
     <div class="row justify-content-center">
 
       <?php foreach ($hotels as $hotel): ?>
@@ -95,8 +128,8 @@
       </div>
       <?php endforeach; ?>
 
-
     </div>
+
   </div>
 
 </body>
