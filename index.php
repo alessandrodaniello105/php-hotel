@@ -50,7 +50,9 @@
   // function filterHotel() {
   //   if()
   // }
-
+  // (isset($hasParking)) ? $hasParking = $_GET['parking'] : $hasParking = '';
+    
+    $hasParking = $_GET['parking'];
 
 ?>
 
@@ -75,9 +77,9 @@
         <label for="parking"> Parcheggio:</label>
 
           <select if="parking" name="parking" class="form-select my-2" aria-label="Default select example">
-            <option selected>Qualsiasi</option>
+            <option selected value="">Qualsiasi</option>
             <option value="true">Sì</option>
-            <option value="false">No</option>
+            <option value="0">No</option>
           </select>
 
           <button type="submit">Invia</button>
@@ -93,6 +95,7 @@
       <thead>
         <tr>
           <?php foreach ($hotels[0] as $key => $hotel): ?>
+
     
           <th scope="col"><?php echo ((str_contains($key, '_')) ? ucwords(str_replace('_', ' ', $key)) : ucwords($key)) ?></th>
 
@@ -102,15 +105,32 @@
 
       <tbody>
 
+
         <?php foreach ($hotels as $hotel): ?>
-        <tr>
-          <td><?php echo $hotel['name'] ?></td>
-          <td><?php echo $hotel['description'] ?></td>
-          <td><?php echo ($hotel['parking'])? 'Sì' : 'No' ?></td>
-          <td><?php echo $hotel['vote'] ?> / 5</td>
-          <td><?php echo $hotel['distance_to_center'] ?> km</td>
-        </tr>
+
+          <?php if(!isset($hasParking) || $hasParking == ""): ?>
+            <tr>
+            <td><?php echo $hotel['name'] ?></td>
+            <td><?php echo $hotel['description'] ?></td>
+            <td><?php echo ($hotel['parking'])? 'Sì' : 'No' ?></td>
+            <td><?php echo $hotel['vote'] ?> / 5</td>
+            <td><?php echo $hotel['distance_to_center'] ?> km</td>
+          </tr>
+          <?php elseif ($hotel['parking'] == $hasParking): ?>
+
+          <tr>
+            <td><?php echo $hotel['name'] ?></td>
+            <td><?php echo $hotel['description'] ?></td>
+            <td><?php echo ($hotel['parking'])? 'Sì' : 'No' ?></td>
+            <td><?php echo $hotel['vote'] ?> / 5</td>
+            <td><?php echo $hotel['distance_to_center'] ?> km</td>
+          </tr>
+          <?php endif; ?>
+
         <?php endforeach; ?>
+
+
+
 
       </tbody>
 
