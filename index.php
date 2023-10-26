@@ -90,6 +90,31 @@
 
     <div class="row justify-content-center">
 
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Parking</th>
+          <th scope="col">Description</th>
+          <th scope="col">Distance to center</th>
+          <th scope="col">Vote</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <?php foreach ($hotels as $hotel): ?>
+        <tr>
+          <td><?php echo $hotel['name'] ?></td>
+          <td><?php echo ($hotel['parking'])? 'Sì' : 'No' ?></td>
+          <td><?php echo $hotel['description'] ?></td>
+          <td><?php echo $hotel['distance_to_center'] ?> km</td>
+          <td><?php echo $hotel['vote'] ?> / 5</td>
+        </tr>
+        <?php endforeach; ?>
+
+      </tbody>
+    </table>
+
       <?php foreach ($hotels as $hotel): ?>
       <div class="col-6">
 
